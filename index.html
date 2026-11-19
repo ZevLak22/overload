@@ -166,6 +166,8 @@ details p{margin:10px 0 0}
 .toast{position:fixed;left:50%;top:calc(14px + var(--sat));transform:translate(-50%,-10px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;transition:.2s;pointer-events:none;z-index:50;max-width:90vw;text-align:center}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 @media(max-width:370px){.grid{grid-template-columns:18px minmax(0,1fr) 66px 54px 42px;gap:6px}.tick{width:42px}.een{grid-template-columns:repeat(2,minmax(0,1fr))}h1{font-size:30px}.next h1{font-size:34px}}
+body.kb .sticky{position:static}
+body.kb .foot,body.kb nav.tabs{display:none}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}.btn:active,.wrow:active,.next:active{transform:none}}
 </style>
 </head>
@@ -178,6 +180,6 @@ details p{margin:10px 0 0}
  <button data-a="tab" data-v="hist"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/></svg>Historie</button>
 </nav>
 <div class="toast" id="toast" role="status"></div>
-<script src="app.js?v=3"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>

@@ -213,7 +213,7 @@ function vEdit() {
      <div class="pal">${PAL.map(c => `<button class="sw ${c === w.color ? 'on' : ''}" style="background:${c}" data-a="wcol" data-wi="${wi}" data-c="${c}" aria-label="Barva ${c}"></button>`).join('')}</div>
      ${w.exercises.map((e, ei) => `<div class="ee"><div class="eet"><input value="${esc(e.name)}" data-e="name" data-wi="${wi}" data-ei="${ei}" placeholder="Název cviku" aria-label="Název cviku">
         <button class="ic" data-a="emv" data-wi="${wi}" data-ei="${ei}" data-d="-1" aria-label="Nahoru">↑</button><button class="ic" data-a="emv" data-wi="${wi}" data-ei="${ei}" data-d="1" aria-label="Dolů">↓</button><button class="ic del" data-a="edel" data-wi="${wi}" data-ei="${ei}" aria-label="Smazat cvik">${armed === `e${wi}_${ei}` ? '?' : '✕'}</button></div>
-        <div class="een">${[['sets', 'Série'], ['lo', 'Opak. od'], ['hi', 'Opak. do'], ['inc', 'Krok kg']].map(([k, l]) => `<label>${l}<input inputmode="${k === 'inc' ? 'decimal' : 'numeric'}" value="${esc(k === 'inc' ? fmt(e[k]) : e[k])}" data-e="${k}" data-wi="${wi}" data-ei="${ei}"></label>`).join('')}</div></div>`).join('')}
+        <div class="een">${[['sets', 'Série'], ['lo', 'Opak. od'], ['hi', 'Opak. do'], ['inc', 'Krok kg']].map(([k, l]) => `<label>${l}<input inputmode="${k === 'inc' ? 'decimal' : 'numeric'}" value="${esc(k === 'inc' && typeof e[k] === 'number' ? fmt(e[k]) : e[k])}" data-e="${k}" data-wi="${wi}" data-ei="${ei}"></label>`).join('')}</div></div>`).join('')}
      <div class="edb"><button class="btn" data-a="eadd" data-wi="${wi}">+ Přidat cvik</button><button class="btn ghost danger" data-a="wdel" data-wi="${wi}">${armed === 'w' + wi ? 'Opravdu smazat?' : 'Smazat trénink'}</button></div></section>`).join('')}
    <button class="btn wide" data-a="wadd" style="margin-top:14px">+ Přidat trénink</button>
    <details><summary>Jak nastavit čísla</summary><p><b>Opak. od–do:</b> velké cviky (tlaky, přítahy, leg press) 6–10, izolované 8–12, předloktí a břicho 10–15.<br><b>Krok kg:</b> o kolik jde nejmíň přidat – podle stacku na stroji (2,5 / 5 / 7 kg).</p></details>
@@ -482,6 +482,9 @@ document.addEventListener('keydown', ev => {
   const t = ev.target;
   if (ev.key === 'Enter' && t.dataset && t.dataset.f) { ev.preventDefault(); const ins = [...document.querySelectorAll('.sr input')]; const i = ins.indexOf(t); if (ins[i + 1]) ins[i + 1].focus(); else t.blur(); }
 });
+const isField = el => el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') && el.type !== 'checkbox' && el.type !== 'file';
+document.addEventListener('focusin', ev => { if (isField(ev.target)) document.body.classList.add('kb'); });
+document.addEventListener('focusout', () => { setTimeout(() => { if (!isField(document.activeElement)) document.body.classList.remove('kb'); }, 80); });
 document.addEventListener('focusin', ev => { const t = ev.target; if (t.dataset && t.dataset.f) setTimeout(() => { try { t.select(); } catch (e) {} }, 0); });
 
 /* ================= žádné pružení na iPhonu ================= */
