@@ -25,11 +25,11 @@
 html,body{height:100%;overflow:hidden;overscroll-behavior:none;touch-action:manipulation}
 html{background:var(--bg)}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,"Segoe UI",Roboto,sans-serif;overflow-x:clip;overscroll-behavior-y:none}
-main{position:fixed;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:calc(12px + var(--sat)) max(16px,env(safe-area-inset-right),calc((100% - 560px)/2)) calc(110px + var(--sab)) max(16px,env(safe-area-inset-left),calc((100% - 560px)/2))}
+main{position:fixed;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:calc(12px + var(--sat)) max(16px,env(safe-area-inset-right),calc((100% - 560px)/2)) calc(84px + var(--sab)) max(16px,env(safe-area-inset-left),calc((100% - 560px)/2))}
 button{font:inherit;color:inherit;cursor:pointer}
 h1,h2,h3{margin:0;letter-spacing:-.02em}
 h1{font-size:34px;line-height:1.05;font-weight:800}
-.h2{font-size:15px;font-weight:600;color:var(--mute);margin:26px 2px 8px}
+.h2{font-size:15px;font-weight:600;color:var(--mute);margin:20px 2px 4px}
 .logo{font-weight:900;font-size:26px;letter-spacing:-.03em}.logo span{color:var(--acc)}
 .hd{display:flex;align-items:center;justify-content:space-between;min-height:48px}
 .sub{color:var(--mute);font-size:14px;margin:2px 0 0}
@@ -41,14 +41,14 @@ h1{font-size:34px;line-height:1.05;font-weight:800}
 .btn.danger{color:var(--down)}
 .btn:active,.wrow:active,.next:active{transform:scale(.985)}
 .k-up{color:var(--up)}.k-hold{color:var(--hold)}.k-down,.k-reg,.k-stag{color:var(--down)}.k-new,.k-cal,.k-dl,.k-none{color:var(--mute)}
-.next{display:block;width:100%;text-align:left;border:0;border-radius:22px;padding:20px;margin-top:16px;color:var(--ink);background:radial-gradient(120% 90% at 100% 0%,color-mix(in srgb,var(--c) 34%,transparent),transparent 60%),var(--card);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--c) 55%,transparent)}
+.next{display:block;width:100%;text-align:left;border:0;border-radius:22px;padding:18px;margin-top:12px;color:var(--ink);background:radial-gradient(120% 90% at 100% 0%,color-mix(in srgb,var(--c) 34%,transparent),transparent 60%),var(--card);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--c) 55%,transparent)}
 .lbl{font-size:13px;font-weight:700;color:var(--c);margin-bottom:6px}
-.next h1{font-size:40px}
-.next .meta{color:var(--mute);font-size:14px;margin:6px 0 14px}
-.prev{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:6px;font-size:15px}
+.next h1{font-size:36px}
+.next .meta{color:var(--mute);font-size:14px;margin:4px 0 12px}
+.prev{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:5px;font-size:15px}
 .prev li{display:flex;justify-content:space-between;gap:10px}.prev li span:last-child{white-space:nowrap;font-weight:600}
 .prev .more{color:var(--mute)}
-.wrow{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:0;border-radius:16px;background:var(--card);padding:14px 16px;margin-top:8px;min-height:64px}
+.wrow{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:0;border-radius:16px;background:var(--card);padding:12px 16px;margin-top:8px;min-height:60px}
 .wrow i{width:5px;align-self:stretch;border-radius:3px;background:var(--c);flex:none}
 .wrow div{flex:1}.wrow b{display:block;font-size:17px}.wrow span{color:var(--mute);font-size:13px}
 .chev{color:var(--mute);flex:none}
@@ -107,7 +107,7 @@ nav.tabs button.on{color:var(--acc)}
 .timer .tl{font-size:12px;color:var(--mute);display:block;font-weight:600}
 .timer button{min-height:40px;min-width:48px;border:0;border-radius:10px;background:var(--card2);font-weight:700;font-size:14px}
 .timer.over{background:color-mix(in srgb,var(--up) 22%,var(--card))}.timer.over .tt{color:var(--up)}
-.credit{text-align:center;color:#5d5d66;font-size:12px;margin:28px 0 0;letter-spacing:.02em}
+.credit{text-align:center;color:#5d5d66;font-size:12px;margin:18px 0 0;letter-spacing:.02em}
 .welcome .credit{margin-top:24px}
 .discard{display:block;margin:24px auto 0;background:none;border:0;color:var(--mute);font-size:14px;min-height:44px}
 /* editor */
@@ -178,6 +178,6 @@ details p{margin:10px 0 0}
  <button data-a="tab" data-v="hist"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/></svg>Historie</button>
 </nav>
 <div class="toast" id="toast" role="status"></div>
-<script src="app.js"></script>
+<script src="app.js?v=3"></script>
 </body>
 </html>

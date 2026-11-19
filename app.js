@@ -151,7 +151,7 @@ function vHome() {
   if (nw) {
     const l = lastOf(nw.id);
     h += `<button class="next" style="--c:${esc(nw.color)}" data-a="start" data-w="${nw.id}"><div class="lbl">Další trénink</div><h1>${esc(nw.name)}</h1>
-      <div class="meta">${nw.exercises.length} ${pl(nw.exercises.length, 'cvik', 'cviky', 'cviků')}${l ? ' · minule ' + dmw(l.date) : ''}</div>${nw.exercises.length ? exPreview(nw, 4) : '<ul class="prev"><li class="more">Zatím žádné cviky – přidej je v plánu.</li></ul>'}
+      <div class="meta">${nw.exercises.length} ${pl(nw.exercises.length, 'cvik', 'cviky', 'cviků')}${l ? ' · minule ' + dmw(l.date) : ''}</div>${nw.exercises.length ? exPreview(nw, 3) : '<ul class="prev"><li class="more">Zatím žádné cviky – přidej je v plánu.</li></ul>'}
       <span class="btn pri wide" style="display:grid;place-items:center;background:var(--c)">Začít trénink</span></button>`;
     const others = S.plan.workouts.filter(w => w.id !== nw.id);
     if (others.length) h += `<div class="h2">Další v pořadí</div>` + others.map(w => { const l2 = lastOf(w.id); return `<button class="wrow" style="--c:${esc(w.color)}" data-a="start" data-w="${w.id}"><i></i><div><b>${esc(w.name)}</b><span>${w.exercises.length} ${pl(w.exercises.length, 'cvik', 'cviky', 'cviků')}${l2 ? ' · minule ' + dmw(l2.date) : ''}</span></div>${CHEV}</button>`; }).join('');
@@ -483,6 +483,19 @@ document.addEventListener('keydown', ev => {
   if (ev.key === 'Enter' && t.dataset && t.dataset.f) { ev.preventDefault(); const ins = [...document.querySelectorAll('.sr input')]; const i = ins.indexOf(t); if (ins[i + 1]) ins[i + 1].focus(); else t.blur(); }
 });
 document.addEventListener('focusin', ev => { const t = ev.target; if (t.dataset && t.dataset.f) setTimeout(() => { try { t.select(); } catch (e) {} }, 0); });
+
+/* ================= žádné pružení na iPhonu ================= */
+let ty = 0;
+document.addEventListener('touchstart', e => { ty = e.touches[0].clientY; }, { passive: true });
+document.addEventListener('touchmove', e => {
+  if (e.touches.length > 1) { e.preventDefault(); return; }
+  const m = $('#app'), dy = e.touches[0].clientY - ty;
+  const inMain = m.contains(e.target);
+  if (!inMain) { e.preventDefault(); return; }
+  const max = m.scrollHeight - m.clientHeight;
+  if (max <= 1) { e.preventDefault(); return; }
+  if ((m.scrollTop <= 0 && dy > 0) || (m.scrollTop >= max - 1 && dy < 0)) e.preventDefault();
+}, { passive: false });
 
 /* ================= start ================= */
 if (D && !D.list) D = null;
