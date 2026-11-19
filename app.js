@@ -335,7 +335,7 @@ function render() {
   if (v === 'exd') drawChart(); else if (roC) { roC.disconnect(); roC = null; }
   if (v === 'log') uiElapsed();
 }
-function go(r) { R = r; armed = null; render(); scrollTo(0, 0); }
+function go(r) { R = r; armed = null; render(); ($('#app').scrollTop = 0); }
 
 /* ================= trénink ================= */
 function buildEx(e, dl, skip) {
