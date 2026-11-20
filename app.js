@@ -217,7 +217,7 @@ function vEdit() {
      <div class="edb"><button class="btn" data-a="eadd" data-wi="${wi}">+ Přidat cvik</button><button class="btn ghost danger" data-a="wdel" data-wi="${wi}">${armed === 'w' + wi ? 'Opravdu smazat?' : 'Smazat trénink'}</button></div></section>`).join('')}
    <button class="btn wide" data-a="wadd" style="margin-top:14px">+ Přidat trénink</button>
    <details><summary>Jak nastavit čísla</summary><p><b>Opak. od–do:</b> velké cviky (tlaky, přítahy, leg press) 6–10, izolované 8–12, předloktí a břicho 10–15.<br><b>Krok kg:</b> o kolik jde nejmíň přidat – podle stacku na stroji (2,5 / 5 / 7 kg).</p></details>
-   <div class="sticky"><button class="btn pri wide" data-a="editSave">Potvrdit plán</button></div>`;
+`;
 }
 
 function vSet() {
@@ -328,7 +328,7 @@ function render() {
   const v = R.v;
   const map = { welcome: vWelcome, home: vHome, log: vLog, sum: vSum, edit: vEdit, set: vSet, prog: vProg, exd: vExd, hist: vHist, sd: vSd };
   $('#app').innerHTML = (map[v] || vHome)();
-  $('#foot').innerHTML = v === 'log' && D ? footLog() : '';
+  $('#foot').innerHTML = v === 'log' && D ? footLog() : v === 'edit' ? '<div class="foot"><div class="in"><button class="btn pri wide" data-a="editSave">Potvrdit plán</button></div></div>' : '';
   const tabs = $('#tabs'); tabs.hidden = !['home', 'prog', 'exd', 'hist', 'sd', 'set'].includes(v) || !S.plan.workouts.length;
   const tv = v === 'exd' ? 'prog' : v === 'sd' ? 'hist' : v;
   tabs.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.v === tv));
